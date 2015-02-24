@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="cs144" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee">
+	<display-name>CS144</display-name>
+	<servlet>
+		<servlet-name>ConfigurationTest</servlet-name>
+		<servlet-class>edu.ucla.cs.cs144.ConfigurationTest</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ConfigurationTest</servlet-name>
+		<url-pattern>/p1</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>
