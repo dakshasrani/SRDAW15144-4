@@ -14,9 +14,19 @@ public class SearchServlet extends HttpServlet implements Servlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         String query = request.getParameter("query");
-        SearchResult[] searchResult = AuctionSearchClient.basicSearch(query,0,20);
+        SearchResult[] searchResult = AuctionSearchClient.basicSearch(query,0,100);
+
+        request.setAttribute("query", query);
         request.setAttribute("searchResult", searchResult);
         request.setAttribute("numResult",searchResult.length);
+
+        int recordsPerPage = 10;
+        int page = 1;
+        if(request.getParameter("currentPage") != null)
+            page = Integer.parseInt(request.getParameter("currentPage"));
+
+        request.setAttribute("recordsPerPage", recordsPerPage);
+        request.setAttribute("currentPage", page);
         request.getRequestDispatcher("/keywordSearchResults.jsp").forward(request, response);
     }
 }
