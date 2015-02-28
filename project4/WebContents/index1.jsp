@@ -5,7 +5,7 @@
 <body>
     Hello, world.
     <br/>
-
-    <%= request.getAttribute("bl") %>
+    <xml><%= request.getAttribute("xml") %></xml>
+    <%= request.getAttribute("xml") %>
 </body>
 </html>
