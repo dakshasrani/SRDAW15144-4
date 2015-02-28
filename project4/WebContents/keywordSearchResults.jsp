@@ -6,13 +6,6 @@
     <%
     resultItems = request.getAttribute("searchResult");
     %>
-    <table>
-      <c:forEach items="${resultItems}" var="item">
-        <tr>
-          <td><c:out value="{$item.getItemId()}" /></td>
-          <td><c:out value="{$item.getName()}" /></td>
-        </tr>
-      </c:forEach>
-    </table>
+    
   </body>
 </html>
