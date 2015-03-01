@@ -14,7 +14,7 @@ public class SearchServlet extends HttpServlet implements Servlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         String query = request.getParameter("query");
-        SearchResult[] searchResult = AuctionSearchClient.basicSearch(query,0,100);
+        SearchResult[] searchResult = AuctionSearchClient.basicSearch(query,0,70);
 
         request.setAttribute("query", query);
         request.setAttribute("searchResult", searchResult);

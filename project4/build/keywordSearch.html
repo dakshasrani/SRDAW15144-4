@@ -1,9 +1,26 @@
 <html>
-<head><title>Keyword Search</title></head>
+<head>
+	<title>Keyword Search</title>
+	<style>
+	input{
+		font-size: 120%
+	}
+	</style>
+	<script type="text/javascript" src="autosuggest2.js"></script>
+	<script type="text/javascript" src="suggestions2.js"></script>
+	<link rel="stylesheet" type="text/css" href="autosuggest.css" />
+	<script type="text/javascript">
+			window.onload = function () {
+					var oTextbox = new AutoSuggestControl(document.getElementById("textbox1"), new StateSuggestions());
+			}
+	</script>
+</head>
 <body>
-	<form action="search">
-		Keyword: <input type="text" name="query"><br>
-		<input type="submit" value="Submit">
-	</form>
+	<div id="searchBox" align="center">
+		<form action="search">
+			<h2>Enter the keyword to be searched</h2>
+			<input type="text" id="textbox1"><br><br>
+			<input type="submit" value="Submit">
+		</form>
 </body>
 </html>
