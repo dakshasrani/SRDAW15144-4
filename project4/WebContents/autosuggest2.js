@@ -1,4 +1,3 @@
-
 /**
  * An autosuggest textbox control.
  * @class

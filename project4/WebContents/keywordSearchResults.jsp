@@ -31,8 +31,15 @@
     int currentPage = (Integer)request.getAttribute("currentPage");
     String itemId="";
     boolean check = currentPage < noOfPages;
-    %>
 
+    int startPageNo = (currentPage - 1)*recordsPerPage + 1;
+    int endPageNo = 0;
+    if((currentPage * recordsPerPage) > numResults)
+        endPageNo = (currentPage - 1)*recordsPerPage + (numResults % recordsPerPage);
+    else
+        endPageNo = (currentPage*recordsPerPage);
+
+    %>
     <div id="textbox" align="center">
       <form action="search">
         <h3>Enter the keyword to be searched</h3>
@@ -44,19 +51,24 @@
 <% if (resultItems.length!=0) {%>
   <div id="resultTable" align="center">
     <table border = 1 cellpadding = "5" cellspacing = "5" align="center" >
-        <h3><%= (currentPage - 1)*recordsPerPage + 1 %> to <%= (currentPage*recordsPerPage) %> Search Results for "<%=query%>"</h3>
+        <h3><%= startPageNo%> to <%= endPageNo%> Search Results for "<%=query%>"</h3>
           <tr align="center" bgcolor="#9acd32">
             <td>Item ID</td>
             <td>Item Name</td>
           </tr>
 
-        <%  for(int item = 0; item < recordsPerPage; item++){
-          itemId = resultItems[(currentPage - 1)* recordsPerPage + item].getItemId();%>
-          <tr>
-            <td><a href="item?itemId=<%=itemId%>"><%= resultItems[(currentPage - 1)* recordsPerPage + item].getItemId() %></a></td>
-            <td><%= resultItems[(currentPage - 1)* recordsPerPage + item].getName() %></td>
-          </tr>
-        <% } %>
+        <% int loopVar = 0;
+        if((currentPage * recordsPerPage) > numResults)
+              loopVar = numResults % recordsPerPage;
+        else
+              loopVar = recordsPerPage;
+          for(int item = 0; item < loopVar; item++){
+            itemId = resultItems[(currentPage - 1)* recordsPerPage + item].getItemId();%>
+            <tr>
+              <td><a href="item?itemId=<%=itemId%>"><%= resultItems[(currentPage - 1)* recordsPerPage + item].getItemId() %></a></td>
+              <td><%= resultItems[(currentPage - 1)* recordsPerPage + item].getName() %></td>
+            </tr>
+          <% } %>
 
     </table>
   </div>
@@ -78,7 +90,7 @@
     <%--For displaying Page numbers.
   The when condition does not display a link for the current page--%>
   <div id="pageNo" align="center">
-   <table border="1" cellpadding="5" cellspacing="5">
+   <table border=1 cellpadding="5" cellspacing="5">
        <tr>
            <c:forEach begin="1" end="<%= noOfPages%>" var="i">
                <c:choose>
@@ -103,7 +115,7 @@
 
  <% } else{ %>
 
-    <h3>No Results Found</h3>
+    <h2>No Results Found for "<%=query%>"</h2>
 <% } %>
   </body>
 </html>

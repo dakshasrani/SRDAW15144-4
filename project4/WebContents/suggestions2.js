@@ -1,4 +1,3 @@
-
 /**
  * Provides suggestions for state names (USA).
  * @class
