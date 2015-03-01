@@ -1,9 +1,10 @@
 <html>
 <head>
-    <title><%= request.getAttribute("title") %></title>
+    <title>Results</title>
 </head>
 <body>
     Hello, world.
-    Num : <%= request.getAttribute("num") %>
+    <br/>
+    <%= request.getAttribute("xml") %>
 </body>
 </html>

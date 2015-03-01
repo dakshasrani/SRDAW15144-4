@@ -38,26 +38,27 @@ public class ProxyServlet extends HttpServlet implements Servlet {
         response.setContentType("text/xml");
        // String xmlString = "";
         String query = request.getParameter("query");
-        PrintWriter out = response.getWriter();
+        //PrintWriter out = response.getWriter();
         HttpURLConnection httpConnection = (HttpURLConnection) new URL("http://google.com/complete/search?output=toolbar&q="+query).openConnection();
-        BufferedReader in = new BufferedReader(new InputStreamReader(httpConnection.getInputStream()));
-        String responseLine;
+        InputStream input = httpConnection.getInputStream();
+        /*String responseLine;
         StringBuffer appendedResponses = new StringBuffer();
         while ((responseLine = in.readLine()) != null){
-            
+
             //out.println(responseLine);
             appendedResponses.append(responseLine);
         }
-        out.println(appendedResponses);
-        out.close();
+        //out.println(appendedResponses);
+        out.close();*/
+
+        byte[] buffer = new byte[1024]; // Adjust if you want
+           int bytesRead;
+           while ((bytesRead = input.read(buffer)) != -1)
+           {
+               response.getOutputStream().write(buffer, 0, bytesRead);
+           }
+
+        //request.setAttribute("suggestions",appendedResponses.toString());
+
     }
-    
-   /*public static String getCharacterDataFromElement(Element e) {
-    Node child = (Node) e.getFirstChild();
-    if (child instanceof CharacterData) {
-      CharacterData cd = (CharacterData) child;
-      return cd.getData();
-    }
-    return "";
-  }*/
 }

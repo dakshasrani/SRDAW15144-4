@@ -12,6 +12,9 @@ public class Seller {
         return this.rating;
     }
     
+    public Seller() {
+        
+    }
     Seller(String userId, int rating) {
         this.userId = userId;
         this.rating = rating;

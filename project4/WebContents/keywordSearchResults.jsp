@@ -7,6 +7,14 @@
 <html>
   <head>
     <title>Keyword Search Results</title>
+    <script type="text/javascript" src="autosuggest2.js"></script>
+    <script type="text/javascript" src="suggestions2.js"></script>
+    <link rel="stylesheet" type="text/css" href="autosuggest.css" />
+    <script type="text/javascript">
+        window.onload = function () {
+            var oTextbox = new AutoSuggestControl(document.getElementById("query"), new StateSuggestions());
+        }
+    </script>
     <style>
   	input{
   		font-size: 100%
@@ -28,7 +36,7 @@
     <div id="textbox" align="center">
       <form action="search">
         <h3>Enter the keyword to be searched</h3>
-        <input type="text" name="query"><br><br>
+        <input type="text" name="query" id="query"><br><br>
         <input type="submit" value="Submit">
       </form>
     </div>

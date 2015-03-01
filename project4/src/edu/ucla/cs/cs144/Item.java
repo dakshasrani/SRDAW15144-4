@@ -22,7 +22,7 @@ public class Item {
     private List<String> categories;
     private ArrayList<Bids> bids;
     
-    private Double latitude, longitude;
+    private double latitude, longitude;
     private String itemLocation, itemCountry;
     
     private Seller seller;
@@ -132,6 +132,22 @@ public class Item {
     
     public void setBids(ArrayList<Bids> bids) {
         this.bids = bids;
+    }
+    
+    public double getLatitude() {
+        return this.latitude;
+    }
+    
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+    
+    public double getLongitude() {
+        return this.longitude;
+    }
+    
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
     
     public String getItemLocation() {
@@ -251,14 +267,14 @@ public class Item {
                 
                 //location name lat and long
                 if (Double.parseDouble(locationElt.getAttribute("Latitude"))!=0.00)
-                    this.latitude = Double.parseDouble(locationElt.getAttribute("Latitude"));
+                    this.setLatitude(Double.parseDouble(locationElt.getAttribute("Latitude")));
                 else
-                    this.latitude = 0.00;
+                    this.setLatitude(0.00);
                 
                 if(Double.parseDouble(locationElt.getAttribute("Longitude"))!=0.00)
-                    this.longitude = Double.parseDouble(locationElt.getAttribute("Longitude"));
+                    this.setLongitude(Double.parseDouble(locationElt.getAttribute("Longitude")));
                 else
-                    this.longitude = 0.00;
+                    this.setLongitude(0.00);
                 
                 
             } catch (Exception e) {

@@ -1,5 +1,6 @@
 package edu.ucla.cs.cs144;
 
+import java.io.*;
 import java.io.IOException;
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
@@ -17,19 +18,21 @@ public class ItemServlet extends HttpServlet implements Servlet {
     {
         String itemId = request.getParameter("itemId");
         String xml = AuctionSearchClient.getXMLDataForItemId(itemId);
-        Item item = new Item(xml);
         
-        request.setAttribute("xml", item.getFirstBid());
-        
-        request.setAttribute("item",item);
-        request.setAttribute("categories", item.getCategories());
-        request.setAttribute("seller",item.getSeller());
-        request.setAttribute("bids",item.getBids());
-        request.setAttribute("bl", item.getBids().size());
+        if (!xml.equals("")) {
+            Item item = new Item(xml);
+            request.setAttribute("item",item);
+            request.setAttribute("categories", item.getCategories());
+            request.setAttribute("seller",item.getSeller());
+            request.setAttribute("bids",item.getBids());
+            request.setAttribute("bl", item.getBids().size());
+        }
+        else {
+            request.setAttribute("flag","on");
+        }
         
         request.getRequestDispatcher("/itemResults.jsp").forward(request, response);
         
-        //request.getRequestDispatcher("/index1.jsp").forward(request, response);
     }
     
 }
