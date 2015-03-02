@@ -1,9 +1,24 @@
 <html>
-    <head><title>Get Item</title></head>
+    <head>
+    	<title>Get Item</title>
+    	<link type="text/css" href="css/main.css" rel="stylesheet"/>
+    </head>
     <body>
-        <form action="item">
-            Item ID: <input type="text" name="itemId"><br>
-                <input type="submit" value="Submit">
-        </form>
+    	<div id="nav">
+			<p class="title"><a href="#">eBay</a></p>
+			<ul id="navigation">
+				<li><a href="/eBay/keywordSearch.html">Keyword Search</a></li>
+				<li><a href="/eBay/getItem.html">Item Search</a></li>
+			</ul>
+		</div>
+		<div id = "body">
+			<div id="searchBox" align="center">
+        		<form action="/eBay/item">
+            		<h2>Item ID</h2>
+            		<input type="text" name="id" id="id">&nbsp;&nbsp;&nbsp;&nbsp;
+                	<input type="submit" value="Submit">
+        	</form>
+        </div>
+    </div>
     </body>
 </html>

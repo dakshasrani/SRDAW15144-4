@@ -1,27 +1,35 @@
 <html>
 <head>
 	<title>Keyword Search</title>
-	<style>
-	input{
-		font-size: 120%
-	}
-	</style>
 	<script type="text/javascript" src="autosuggest2.js"></script>
 	<script type="text/javascript" src="suggestions2.js"></script>
-	<link rel="stylesheet" type="text/css" href="autosuggest.css" />
+	<link rel="stylesheet" type="text/css" href="css/autosuggest.css" />
+	<link rel="stylesheet" href="css/main.css" type="text/css" />
 	<script type="text/javascript">
 			window.onload = function () {
 
-					var oTextbox = new AutoSuggestControl(document.getElementById("query"), new StateSuggestions());
+					var oTextbox = new AutoSuggestControl(document.getElementById("q"), new StateSuggestions());
 			}
 	</script>
 </head>
 	<body>
+		<div id="nav">
+			<p class="title"><a href="#">eBay</a></p>
+			<ul id="navigation">
+				<li><a href="/eBay/keywordSearch.html">Keyword Search</a></li>
+				<li><a href="/eBay/getItem.html">Item Search</a></li>
+			</ul>
+		</div>
+		<div id = "body">
 		<div id="searchBox" align="center">
-			<form action="search">
+			<form action="/eBay/search">
 				<h2>Enter the keyword to be searched</h2>
-				<input type="text" id="query" name="query"><br><br>
+				<input type="text" id="q" name="q">&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type="submit" value="Submit">
+				<input type="hidden" name="numResultsToSkip" value="0">
+				<input type="hidden" name="numResultsToReturn" value="10">
 			</form>
+		</div>
+	</div>
 	</body>
 </html>

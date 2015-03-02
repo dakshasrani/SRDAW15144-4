@@ -45,14 +45,13 @@ function AutoSuggestControl(oTextbox /*:HTMLInputElement*/,
 AutoSuggestControl.prototype.autosuggest = function (aSuggestions /*:Array*/,
                                                      bTypeAhead /*:boolean*/) {
 
- window.alert("Reached typeahead in autosuggest");
     //make sure there's at least one suggestion
     if (aSuggestions.length > 0) {
         if (bTypeAhead) {
            this.typeAhead(aSuggestions[0]);
         }
 
-        window.alert("Inside autosuggest, suggestions:" + aSuggestions.length);
+        //window.alert("Inside autosuggest, suggestions:" + aSuggestions.length);
         this.showSuggestions(aSuggestions);
     } else {
         this.hideSuggestions();
@@ -66,7 +65,6 @@ AutoSuggestControl.prototype.autosuggest = function (aSuggestions /*:Array*/,
 AutoSuggestControl.prototype.createDropDown = function () {
 
     var oThis = this;
-    window.alert("Creating Drop Down");
     //create the layer and assign styles
     this.layer = document.createElement("div");
     this.layer.className = "suggestions";
@@ -91,9 +89,7 @@ AutoSuggestControl.prototype.createDropDown = function () {
         }
     };
 
-
     document.body.appendChild(this.layer);
-    window.alert("Done creating dropdown");
 };
 
 /**
@@ -160,7 +156,6 @@ AutoSuggestControl.prototype.handleKeyDown = function (oEvent /*:Event*/) {
  */
 AutoSuggestControl.prototype.handleKeyUp = function (oEvent /*:Event*/) {
 
-    window.alert("Entered handleKeyUp");
     var iKeyCode = oEvent.keyCode;
 
     //for backspace (8) and delete (46), shows suggestions without typeahead
@@ -172,7 +167,7 @@ AutoSuggestControl.prototype.handleKeyUp = function (oEvent /*:Event*/) {
         //ignore
     } else {
         //request suggestions from the suggestion provider with typeahead
-        this.provider.requestSuggestions(this, true);
+        this.provider.requestSuggestions(this, false);
     }
 };
 
@@ -240,7 +235,7 @@ AutoSuggestControl.prototype.init = function () {
         oThis.hideSuggestions();
     };
 
-    window.alert("Init");
+    //window.alert("Init");
     //create the suggestions dropdown
     this.createDropDown();
 
@@ -308,7 +303,6 @@ AutoSuggestControl.prototype.selectRange = function (iStart /*:int*/, iLength /*
  */
 AutoSuggestControl.prototype.showSuggestions = function (aSuggestions /*:Array*/) {
 
-    window.alert("Populating dropdown with " + aSuggestions.length);
     var oDiv = null;
     this.layer.innerHTML = "";  //clear contents of the layer
 
@@ -317,8 +311,6 @@ AutoSuggestControl.prototype.showSuggestions = function (aSuggestions /*:Array*/
         oDiv.appendChild(document.createTextNode(aSuggestions[i]));
         this.layer.appendChild(oDiv);
     }
-
-    window.alert("Appended suggestions as children to the divs");
 
     this.layer.style.left = this.getLeft() + "px";
     this.layer.style.top = (this.getTop()+this.textbox.offsetHeight) + "px";
@@ -334,13 +326,10 @@ AutoSuggestControl.prototype.showSuggestions = function (aSuggestions /*:Array*/
  */
 AutoSuggestControl.prototype.typeAhead = function (sSuggestion /*:String*/) {
 
-    window.alert("Inside typeahead function" + sSuggestion);
     //check for support of typeahead functionality
     if (this.textbox.createTextRange || this.textbox.setSelectionRange){
         var iLen = this.textbox.value.length;
         this.textbox.value = sSuggestion;
         this.selectRange(iLen, sSuggestion.length);
     }
-    window.alert("Suggestion which is set to the textbox" + sSuggestion);
-    window.alert("Selected range");
 };

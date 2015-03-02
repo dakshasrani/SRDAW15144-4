@@ -22,6 +22,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+      <title>Item Search Results</title>
       <script src="sorttable.js"></script>
       <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
       <script type="text/javascript">
@@ -82,15 +83,24 @@
         color: white;
       }
       </style>
+      <link rel="stylesheet" href="css/main.css" type="text/css" />
     </head>
     <body onload="initialize()">
-      <div id="textbox" align="center">
-    <form action="item">
-      <h3>Enter the item ID to be searched</h3>
-      <input type="text" name="itemId"><br><br>
-  		<input type="submit" value="Submit">
-  	</form>
-  </div>
+      <div id="nav">
+      <p class="title"><a href="#">eBay</a></p>
+      <ul id="navigation">
+        <li><a href="/eBay/keywordSearch.html">Keyword Search</a></li>
+        <li><a href="/eBay/getItem.html">Item Search</a></li>
+      </ul>
+    </div>
+      <div id = "body">
+        <div id="searchBox" align="center">
+            <form action="/eBay/item">
+                <h2>Item ID</h2>
+                <input type="text" name="id" id="id">&nbsp;&nbsp;&nbsp;&nbsp;
+                  <input type="submit" value="Submit">
+          </form>
+        </div>
   <% if(!flag.equals("on")) { %>
         <h1><%= item.getName() %></h1>
         <h3>Item ID : <%= item.getItemId() %></h3>
@@ -125,6 +135,7 @@
         <br/>
         <b>Bids</b><br/>
         <% if(item.getNoOfBids()!=0) { %>
+        <i>Click on column name to sort</i>
             <table class="sortable">
               <tr>
                 <th>#</th>
@@ -149,10 +160,14 @@
         <% } %>
         </table>
         <br/>
+        <br/>
         <b>Item Description</b><br/>
         <%= item.getDescription() %>
         <% } else { %>
-        <h3> No item with this ID. Please try again </h3>
+        <div class="noResults"> 
+          <h3 align="center"> No item with this ID. Please try again </h3>
+      </div>
         <% } %>
+      </div>
     </body>
 </html>

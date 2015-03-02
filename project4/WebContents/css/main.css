@@ -1,0 +1,79 @@
+#nav
+{
+	background-color:#262626;
+	width:100%;
+	height:50px;
+	position:fixed;
+	top:0px;
+}
+
+li
+{
+	display:inline;
+	padding:10px;
+}
+
+#body
+{
+	margin-top:80px;
+	font-family:verdana;
+}
+
+.title
+{
+	color:#EDEDED;
+ 	font-family:verdana;
+ 	font-size:25px;
+ 	width:350px;
+ 	margin-top:6px;
+ 	margin-left:150px;
+ 	font-weight:bold;
+ 	float:left;
+}
+
+#navigation
+{
+ 	list-style-type:none; 
+}
+li 
+{
+ 	display:inline;
+ 	padding:10px;
+}
+#nav a
+{
+ 	font-family:verdana;
+ 	text-decoration:none;
+ 	color:#EDEDED;
+} 
+#nav a:hover 
+{
+ 	color:#BDBDBD;
+}
+input
+{
+	font-size: 100%
+}
+table.pageNo
+{
+	padding:10px;
+}
+
+table.results
+{
+	padding:10px;
+	margin-left:auto; 
+    margin-right:auto;
+}
+
+tr.columnHead
+{
+	text-align:center;
+	background-color:#9acd32;
+}
+
+table, th, td
+{
+	border:1px solid black;
+	border-collapse: collapse;
+}

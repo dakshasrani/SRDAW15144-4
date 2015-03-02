@@ -16,7 +16,7 @@ public class ItemServlet extends HttpServlet implements Servlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        String itemId = request.getParameter("itemId");
+        String itemId = request.getParameter("id");
         String xml = AuctionSearchClient.getXMLDataForItemId(itemId);
         
         if (!xml.equals("")) {
@@ -26,6 +26,7 @@ public class ItemServlet extends HttpServlet implements Servlet {
             request.setAttribute("seller",item.getSeller());
             request.setAttribute("bids",item.getBids());
             request.setAttribute("bl", item.getBids().size());
+            request.setAttribute("flag","off");
         }
         else {
             request.setAttribute("flag","on");
