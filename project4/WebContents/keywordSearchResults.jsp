@@ -20,7 +20,7 @@
 
   <body>
     <div id="nav">
-      <p class="title"><a href="#">eBay</a></p>
+      <p class="title"><a href="/eBay/index.html">eBay</a></p>
       <ul id="navigation">
         <li><a href="/eBay/keywordSearch.html">Keyword Search</a></li>
         <li><a href="/eBay/getItem.html">Item Search</a></li>
@@ -29,11 +29,11 @@
     <div id = "body">
     <div id="textbox" align="center">
       <form action="/eBay/search">
-        <h3>Enter the keyword to be searched</h3>
+        <h2>Enter Keyword</h2>
         <input type="text" name="q" id="q">&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="submit" value="Submit">
         <input type="hidden" name="numResultsToSkip" value="0">
-        <input type="hidden" name="numResultsToReturn" value="10">
+        <input type="hidden" name="numResultsToReturn" value="20">
       </form>
     </div>
     <% String error = (String)request.getAttribute("error");
@@ -90,7 +90,7 @@
       <td><%= resultItems[item].getName() %></td>
     </tr>
     <%  } %> --%>
-
+  <br />
   <%--For displaying Previous link except for the 1st page --%>
   <div id="previous" align="center">
     <c:if test="${currentPage != 1}">

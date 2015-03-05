@@ -17,6 +17,12 @@ public class ItemServlet extends HttpServlet implements Servlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         String itemId = request.getParameter("id");
+        if(itemId==null || itemId.equals("")) {
+            request.setAttribute("noId","yes");
+        }
+        else {
+            request.setAttribute("noId","no");
+        }
         String xml = AuctionSearchClient.getXMLDataForItemId(itemId);
         
         if (!xml.equals("")) {

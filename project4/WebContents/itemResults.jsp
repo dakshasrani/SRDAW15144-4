@@ -17,6 +17,7 @@
       bids = (List<Bids>)request.getAttribute("bids");
       bid = bids.iterator();
   }
+  String noId = (String)request.getAttribute("noId");
 %>
 
 <!DOCTYPE html>
@@ -87,7 +88,7 @@
     </head>
     <body onload="initialize()">
       <div id="nav">
-      <p class="title"><a href="#">eBay</a></p>
+      <p class="title"><a href="/eBay/index.html">eBay</a></p>
       <ul id="navigation">
         <li><a href="/eBay/keywordSearch.html">Keyword Search</a></li>
         <li><a href="/eBay/getItem.html">Item Search</a></li>
@@ -96,12 +97,13 @@
       <div id = "body">
         <div id="searchBox" align="center">
             <form action="/eBay/item">
-                <h2>Item ID</h2>
+                <h2>Enter Item ID</h2>
                 <input type="text" name="id" id="id">&nbsp;&nbsp;&nbsp;&nbsp;
                   <input type="submit" value="Submit">
           </form>
         </div>
-  <% if(!flag.equals("on")) { %>
+  <% if(noId.equals("no")) {
+  if(!flag.equals("on")) { %>
         <h1><%= item.getName() %></h1>
         <h3>Item ID : <%= item.getItemId() %></h3>
         <br/>
@@ -167,7 +169,9 @@
         <div class="noResults"> 
           <h3 align="center"> No item with this ID. Please try again </h3>
       </div>
-        <% } %>
+        <% } } else { %>
+            <h3 align="center"> Please enter an item ID </h3>
+            <% } %>
       </div>
     </body>
 </html>

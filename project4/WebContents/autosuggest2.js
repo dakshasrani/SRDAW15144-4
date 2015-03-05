@@ -73,8 +73,7 @@ AutoSuggestControl.prototype.createDropDown = function () {
 
     //when the user clicks on the a suggestion, get the text (innerHTML)
     //and place it into a textbox
-    //this.layer.onmousedown =
-    //this.layer.onmouseup =
+    this.layer.onmousedown = this.layer.onmouseup =
     this.layer.onmouseover = function (oEvent) {
         oEvent = oEvent || window.event;
         oTarget = oEvent.target || oEvent.srcElement;
